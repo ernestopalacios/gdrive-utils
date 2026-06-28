@@ -5,6 +5,7 @@ import pytest
 
 from gdrive_utils.core import (
     build_filename,
+    get_all_data,
     get_cuadrilla_by_name,
     get_cuadrilla_order,
     get_initials,
@@ -100,6 +101,47 @@ class TestGetShortCuadrillaName:
     def test_bad_df(self) -> None:
         with pytest.raises(DataFrameError):
             get_short_cuadrilla_name("X", "not a df")  # type: ignore[arg-type]
+
+
+class TestGetAllData:
+    def test_by_name(self, sample_df: pd.DataFrame) -> None:
+        result = get_all_data("Juan Perez Garcia", "NOMBRE", sample_df)
+        assert result["NOMBRE"] == "Juan Perez Garcia"
+        assert result["INICIALES"] == "GJ"
+        assert result["ORDEN_RESPONSABLE"] == "1"
+        assert result["CUADRILLA_OT"] == "Z1 Cuadrilla A"
+        assert result["CUADRILLA_CORTO"] == "Cuadrilla 1"
+        assert result["ORDEN_CUADRILLA"] == "10"
+        assert result["USER_ID"] == 1001
+
+    def test_by_initials(self, sample_df: pd.DataFrame) -> None:
+        result = get_all_data("TM", "INICIALES", sample_df)
+        assert result["NOMBRE"] == "Maria Lopez Torres"
+        assert result["USER_ID"] == 1002
+
+    def test_by_cuadrilla_ot(self, sample_df: pd.DataFrame) -> None:
+        result = get_all_data("Z3 Especial", "CUADRILLA_OT", sample_df)
+        assert result["NOMBRE"] == "Carlos Ruiz Diaz"
+        assert result["ORDEN_CUADRILLA"] == "30"
+        assert result["USER_ID"] == 1003
+
+    def test_no_match(self, sample_df: pd.DataFrame) -> None:
+        with pytest.raises(DataFrameError, match="No match found"):
+            get_all_data("NONEXISTENT", "NOMBRE", sample_df)
+
+    def test_missing_column(self, sample_df: pd.DataFrame) -> None:
+        with pytest.raises(DataFrameError, match="Column 'MISSING' not found"):
+            get_all_data("X", "MISSING", sample_df)
+
+    def test_bad_df(self) -> None:
+        with pytest.raises(DataFrameError):
+            get_all_data("X", "NOMBRE", "not a df")  # type: ignore[arg-type]
+
+    def test_user_id_conversion_error(self, sample_df: pd.DataFrame) -> None:
+        bad_df = sample_df.copy()
+        bad_df["USER_ID"] = ["not_a_number", "1002", "1003"]
+        with pytest.raises(DataFrameError, match="cannot be converted to int"):
+            get_all_data("Juan Perez Garcia", "NOMBRE", bad_df)
 
 
 class TestBuildFilename:

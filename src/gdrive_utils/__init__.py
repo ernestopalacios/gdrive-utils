@@ -28,6 +28,7 @@ from .compat import (
 from .config import GDriveConfig
 from .core import (
     build_filename,
+    get_all_data,
     get_cuadrilla_by_name,
     get_cuadrilla_order,
     get_initials,
@@ -62,6 +63,7 @@ __all__ = [
     "get_initials",
     "get_cuadrilla_by_name",
     "get_short_cuadrilla_name",
+    "get_all_data",
     "build_filename",
     "move_file",
     # Compatible API

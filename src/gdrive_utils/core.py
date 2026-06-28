@@ -174,6 +174,63 @@ def get_short_cuadrilla_name(cuadrilla: str, df: pd.DataFrame) -> str:
     return cuadrilla
 
 
+def get_all_data(value: str, column: str, df: pd.DataFrame) -> dict:
+    """Return every column for the first row where *column* equals *value*.
+
+    All values are returned as strings, except ``USER_ID`` which is
+    converted to an ``int``.
+
+    Args:
+        value: The value to look up.
+        column: The DataFrame column to search in.
+        df: The personnel DataFrame.
+
+    Returns:
+        A dictionary with keys for every column in *df*.
+
+    Raises:
+        DataFrameError: If *df* is not a DataFrame, *column* does not exist,
+            or no matching row is found.
+
+    """
+    if not isinstance(df, pd.DataFrame):
+        raise DataFrameError("Expected a pandas DataFrame")
+    if column not in df.columns:
+        raise DataFrameError(f"Column '{column}' not found in DataFrame")
+
+    mask = df[column] == value
+    matches = df[mask]
+
+    if matches.empty:
+        raise DataFrameError(
+            f"No match found for '{value}' in column '{column}'"
+        )
+
+    if len(matches) > 1:
+        logger.warning(
+            "Multiple matches (%d) for '%s' in '%s'; returning first row",
+            len(matches),
+            value,
+            column,
+        )
+
+    row = matches.iloc[0]
+    result: dict = {}
+    for col in df.columns:
+        val = row[col]
+        if col == "USER_ID":
+            try:
+                result[col] = int(val)
+            except (ValueError, TypeError) as exc:
+                raise DataFrameError(
+                    f"USER_ID value '{val}' cannot be converted to int"
+                ) from exc
+        else:
+            result[col] = str(val)
+
+    return result
+
+
 def build_filename(data: dict, df: pd.DataFrame) -> str:
     """Build a standardised filename from *data* and personnel *df*.
 
