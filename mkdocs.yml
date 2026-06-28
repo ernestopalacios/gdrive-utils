@@ -1,0 +1,99 @@
+site_name: gdrive-utils Documentation
+site_url: https://your-org.github.io/gdrive-utils
+repo_url: https://github.com/your-org/gdrive-utils
+repo_name: gdrive-utils
+
+nav:
+  - Home: index.md
+  - User Guide:
+      - Installation: installation.md
+      - Quick Start: quickstart.md
+      - Configuration: configuration.md
+  - API Reference:
+      - Overview: api.md
+      - Exceptions: api/exceptions.md
+      - Configuration: api/config.md
+      - Authentication: api/auth.md
+      - Sheets: api/sheets.md
+      - Core: api/core.md
+      - Files: api/files.md
+      - Compatibility: api/compat.md
+  - Development:
+      - Contributing: contributing.md
+      - Changelog: changelog.md
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+            docstring_options:
+              ignore_init_summary: true
+            merge_init_into_class: true
+            show_if_no_docstring: false
+            show_source: true
+            show_root_heading: true
+            show_root_full_path: true
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            show_category_heading: true
+            heading_level: 2
+            members_order: source
+            separate_signature: true
+            filters:
+              - "!^_[^_]"
+              - "!^__"
+          paths:
+            - src
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/your-org/gdrive-utils
+
+copyright: Copyright &copy; 2026 Ernesto Palacios
