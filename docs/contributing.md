@@ -3,7 +3,7 @@
 ## Development setup
 
 ```bash
-git clone https://github.com/your-org/gdrive-utils.git
+git clone https://github.com/ernestopalacios/gdrive-utils.git
 cd gdrive-utils
 uv sync --group dev
 ```

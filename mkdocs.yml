@@ -1,6 +1,6 @@
 site_name: gdrive-utils Documentation
-site_url: https://your-org.github.io/gdrive-utils
-repo_url: https://github.com/your-org/gdrive-utils
+site_url: https://ernestopalacios.github.io/gdrive-utils
+repo_url: https://github.com/ernestopalacios/gdrive-utils
 repo_name: gdrive-utils
 
 nav:
@@ -94,6 +94,6 @@ markdown_extensions:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/your-org/gdrive-utils
+      link: https://github.com/ernestopalacios/gdrive-utils
 
 copyright: Copyright &copy; 2026 Ernesto Palacios

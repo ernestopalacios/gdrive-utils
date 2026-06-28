@@ -9,13 +9,13 @@
 ## Install from Git
 
 ```bash
-uv add git+https://github.com/your-org/gdrive-utils.git
+uv add git+https://github.com/ernestopalacios/gdrive-utils.git
 ```
 
 With pip:
 
 ```bash
-pip install git+https://github.com/your-org/gdrive-utils.git
+pip install git+https://github.com/ernestopalacios/gdrive-utils.git
 ```
 
 ## Install with development dependencies
@@ -23,7 +23,7 @@ pip install git+https://github.com/your-org/gdrive-utils.git
 If you want to contribute or run tests locally:
 
 ```bash
-git clone https://github.com/your-org/gdrive-utils.git
+git clone https://github.com/ernestopalacios/gdrive-utils.git
 cd gdrive-utils
 uv sync --group dev
 ```

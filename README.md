@@ -5,13 +5,13 @@ A reusable Python library for Google Drive/Sheets operations and file-renaming w
 ## Installation
 
 ```bash
-uv add git+https://github.com/<your-org>/gdrive-utils.git
+uv add git+https://github.com/ernestopalacios/gdrive-utils.git
 ```
 
 Or with pip:
 
 ```bash
-pip install git+https://github.com/<your-org>/gdrive-utils.git
+pip install git+https://github.com/ernestopalacios/gdrive-utils.git
 ```
 
 ## Quick start

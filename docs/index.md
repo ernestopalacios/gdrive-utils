@@ -14,13 +14,13 @@ The library provides two APIs:
 ## Installation
 
 ```bash
-uv add git+https://github.com/your-org/gdrive-utils.git
+uv add git+https://github.com/ernestopalacios/gdrive-utils.git
 ```
 
 Or with pip:
 
 ```bash
-pip install git+https://github.com/your-org/gdrive-utils.git
+pip install git+https://github.com/ernestopalacios/gdrive-utils.git
 ```
 
 ## Quick example
