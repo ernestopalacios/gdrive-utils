@@ -24,6 +24,7 @@ def sample_df() -> pd.DataFrame:
             "ORDEN_CUADRILLA": ["10", "20", "30"],
             "CUADRILLA_CORTO": ["Cuadrilla 1", "Agencia 2", "Especial 3"],
             "USER_ID": ["1001", "1002", "1003"],
+            "CORREO": ["juan.perez", "maria.lopez", "carlos.ruiz"],
         }
     )
 
@@ -40,5 +41,6 @@ def empty_df() -> pd.DataFrame:
             "ORDEN_CUADRILLA",
             "CUADRILLA_CORTO",
             "USER_ID",
+            "CORREO",
         ]
     )

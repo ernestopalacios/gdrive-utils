@@ -178,9 +178,11 @@ The real sheet contains these columns (all strings from gspread, except
 | `CUADRILLA_CORTO` | Short display name (string) |
 | `ORDEN_CUADRILLA` | 2-digit group hierarchy (string) |
 | `USER_ID` | Internal organisation number (int32) |
+| `CORREO` | E-mail prefix (local-part only), short identifier (string) |
 
 When reading with `read_worksheet()`, all values arrive as strings from
-gspread. The `get_all_data()` function converts `USER_ID` to `int`.
+gspread. The `get_all_data()` function converts `USER_ID` to `int`; every
+other column (including `CORREO`) is returned as a string.
 
 ---
 

@@ -113,6 +113,7 @@ class TestGetAllData:
         assert result["CUADRILLA_CORTO"] == "Cuadrilla 1"
         assert result["ORDEN_CUADRILLA"] == "10"
         assert result["USER_ID"] == 1001
+        assert result["CORREO"] == "juan.perez"
 
     def test_by_initials(self, sample_df: pd.DataFrame) -> None:
         result = get_all_data("TM", "INICIALES", sample_df)

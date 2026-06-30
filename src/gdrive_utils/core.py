@@ -175,10 +175,11 @@ def get_short_cuadrilla_name(cuadrilla: str, df: pd.DataFrame) -> str:
 
 
 def get_all_data(value: str, column: str, df: pd.DataFrame) -> dict:
-    """Return every column for the first row where *column* equals *value*.
+    """Return **all** columns for the first row where *column* equals *value*.
 
-    All values are returned as strings, except ``USER_ID`` which is
-    converted to an ``int``.
+    Every column present in the DataFrame is included in the result
+    dynamically — no hardcoded field list.  All values are returned as
+    strings, except ``USER_ID`` which is converted to an ``int``.
 
     Args:
         value: The value to look up.

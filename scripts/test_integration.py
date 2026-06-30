@@ -92,6 +92,7 @@ def main() -> int:
         "CUADRILLA_CORTO",
         "ORDEN_CUADRILLA",
         "USER_ID",
+        "CORREO",
     ]
     missing = [c for c in expected_cols if c not in df.columns]
     if missing:
